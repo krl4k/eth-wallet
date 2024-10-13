@@ -2,6 +2,7 @@ import { ethers } from 'ethers';
 
 const INFURA_PROJECT_ID = process.env.REACT_APP_INFURA_PROJECT_ID;
 const NETWORK = process.env.REACT_APP_NETWORK;
+const WALLET_KEY = 'ETHEREUM_WALLET';
 
 const getProvider = () => {
     return new ethers.providers.JsonRpcProvider(`https://${NETWORK}.infura.io/v3/${INFURA_PROJECT_ID}`);
@@ -14,11 +15,22 @@ export const generateMnemonic = () => {
 
 export const loginWithMnemonic = (mnemonic) => {
     const wallet = ethers.Wallet.fromMnemonic(mnemonic);
-    return {
+    const walletData = {
         address: wallet.address,
         privateKey: wallet.privateKey,
         mnemonic: wallet.mnemonic.phrase
     };
+    localStorage.setItem(WALLET_KEY, JSON.stringify(walletData));
+    return walletData;
+};
+
+export const getStoredWallet = () => {
+    const storedWallet = localStorage.getItem(WALLET_KEY);
+    return storedWallet ? JSON.parse(storedWallet) : null;
+};
+
+export const clearStoredWallet = () => {
+    localStorage.removeItem(WALLET_KEY);
 };
 
 export const getBalance = async (address) => {

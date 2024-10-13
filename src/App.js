@@ -1,17 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CreateWallet from './components/CreateWallet';
 import Login from './components/Login';
 import Wallet from './components/Wallet';
+import { getStoredWallet, clearStoredWallet } from './services/walletService';
 import './App.css';
 
 const App = () => {
     const [wallet, setWallet] = useState(null);
+
+    useEffect(() => {
+        const storedWallet = getStoredWallet();
+        if (storedWallet) {
+            setWallet(storedWallet);
+        }
+    }, []);
 
     const handleLogin = (loggedInWallet) => {
         setWallet(loggedInWallet);
     };
 
     const handleLogout = () => {
+        clearStoredWallet();
         setWallet(null);
     };
 
