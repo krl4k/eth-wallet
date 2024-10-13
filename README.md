@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# Ethereum Wallet React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a simple Ethereum wallet application built with React. It allows users to create a wallet, log in using a seed phrase, check their balance, and send transactions.
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+Before you begin, ensure you have the following installed:
 
-### `npm start`
+* Node.js and npm. You can download them from [here](https://nodejs.org/).
+* An Infura account and project ID. You can sign up [here](https://infura.io/).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Running with Docker
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+If you prefer to use Docker, follow these steps:
 
-### `npm test`
+1. Make sure you have Docker and Docker Compose installed on your system.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Create a `.env` file in the root directory of the project with the following content:
+   ```
+   REACT_APP_INFURA_PROJECT_ID=your_infura_project_id
+   REACT_APP_NETWORK=mainnet
+   ```
+   Replace `your_infura_project_id` with your actual Infura Project ID.
 
-### `npm run build`
+3. Build and run the Docker container:
+   ```
+   docker-compose up --build
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Open your browser and navigate to `http://localhost:3000` to view the application.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To stop the container, use:
+```
+docker-compose down
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Note: This Docker setup runs the application in development mode. For a production setup, you would need to modify the Dockerfile to build the app and serve it with a production-ready web server.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Project Setup
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Follow these steps to set up your development environment:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone the repository:
+   ```
+   git clone https://github.com/your-username/ethereum-wallet-react.git
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Navigate to the project directory:
+   ```
+   cd ethereum-wallet-react
+   ```
 
-## Learn More
+3. Install dependencies:
+   ```
+   npm install
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. Create a `.env` file in the root directory of the project and add the following environment variables:
+   ```
+   REACT_APP_INFURA_PROJECT_ID=your_infura_project_id
+   REACT_APP_NETWORK=mainnet
+   ```
+   Replace `your_infura_project_id` with your actual Infura Project ID.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   Note: For development and testing purposes, it's better to use a test network such as Goerli or Sepolia instead of the main network (mainnet). In this case, replace `mainnet` with `goerli` or `sepolia`.
 
-### Code Splitting
+## Running the Application
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+To run the application in development mode, use the following command:
 
-### Analyzing the Bundle Size
+```
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This will start the development server. Open [http://localhost:3000](http://localhost:3000) to view the application in your browser.
 
-### Making a Progressive Web App
+## Building for Production
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+To create a production build, use:
 
-### Advanced Configuration
+```
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+This will create an optimized version of your application in the `build` folder.
 
-### Deployment
+## Important Notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- This application is intended for educational purposes only. It is not secure enough for handling real Ethereum transactions.
+- Never share your private keys or seed phrases with anyone.
+- In a real-world application, you would need to implement additional security measures, especially regarding the storage and handling of private keys and seed phrases.
 
-### `npm run build` fails to minify
+## Functionality
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Creating a new wallet
+- Logging into an existing wallet using a seed phrase
+- Viewing ETH balance
+- Sending ETH transactions
+- Automatic session saving (user remains logged in after page reload)
+
+## Project Structure
+
+- `src/components/` - React components
+- `src/services/` - Services for working with Ethereum
+- `src/App.js` - Main application component
+- `src/App.css` - Application styles
