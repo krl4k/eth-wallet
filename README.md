@@ -43,7 +43,7 @@ Follow these steps to set up your development environment:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/your-username/ethereum-wallet-react.git
+   git clone https://github.com/krl4k/ethereum-wallet-react.git
    ```
 
 2. Navigate to the project directory:
@@ -75,15 +75,6 @@ npm start
 
 This will start the development server. Open [http://localhost:3000](http://localhost:3000) to view the application in your browser.
 
-## Building for Production
-
-To create a production build, use:
-
-```
-npm run build
-```
-
-This will create an optimized version of your application in the `build` folder.
 
 ## Important Notes
 
